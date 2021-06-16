@@ -1,14 +1,16 @@
 import React from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const DeleteMovieModal = ({ cancelDelete, id, deleteMovie }) => {
+  const { push } = useHistory();
 
   const handleDelete = (e) => {
     e.preventDefault();
     axios.delete(`http://localhost:5000/api/movies/${id}`)
       .then(res => {
         deleteMovie(id);
-        window.location.href = '/movies';
+        push('/movies');
       })
       .catch(alert);
   };

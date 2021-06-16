@@ -28,6 +28,10 @@ const Movie = (props) => {
   const handleDeleteOpen = () => setDeleteOpen(true);
   const cancelDelete = () => setDeleteOpen(false);
 
+  const handleFavorite = (e) => {
+    addToFavorites(movie);
+  };
+
   return(
     <div className="modal-page col">
       <div className="modal-dialog">
@@ -63,7 +67,7 @@ const Movie = (props) => {
                       </div>
                     </section>
                     <section>
-                      <span className="m-2 btn btn-dark">Favorite</span>
+                      <span className="m-2 btn btn-dark" onClick={handleFavorite}>Favorite</span>
                       <Link to={`/movies/edit/${movie.id}`} className="m-2 btn btn-success">Edit</Link>
                       <span className="delete">
                         <input onClick={handleDeleteOpen}type="button" className="m-2 btn btn-danger" value="Delete"/>
